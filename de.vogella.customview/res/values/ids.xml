@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <item type="id" name="clickable_right" />
+    <item type="id" name="clickable_left" />
+    <item type="id" name="value_text" />
+    <item type="id" name="value_color" />
+    <item type="id" name="separator" />
+    <item type="id" name="title" />
+    <item type="id" name="image" />
+    <item type="id" name="view1" />
+    <item type="id" name="view2" />
+    
+</resources>
