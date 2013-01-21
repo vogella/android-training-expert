@@ -3,6 +3,7 @@ package com.example.android.rssfeed;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,5 +49,12 @@ public class MyListFragment extends Fragment {
 		String newTime = String.valueOf(System.currentTimeMillis());
 		// Send data to Activity
 		listener.onRssItemSelected(newTime);
+	}
+	
+	@Override
+	public void onDestroy() {
+		Log.e("ERROR", "destroy");
+		super.onDestroy();
+		
 	}
 }

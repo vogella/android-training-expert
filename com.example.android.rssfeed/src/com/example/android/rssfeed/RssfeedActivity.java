@@ -12,7 +12,12 @@ public class RssfeedActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rssfeed);
-	}
+		DetailFragment fragment = (DetailFragment) getFragmentManager()
+				.findFragmentById(R.id.detailFragment);
+		if (fragment!=null && fragment.isInLayout()){
+			fragment.setRetainInstance(true);
+		}
+	}	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
