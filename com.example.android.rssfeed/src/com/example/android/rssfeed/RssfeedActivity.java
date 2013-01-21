@@ -32,7 +32,7 @@ public class RssfeedActivity extends Activity implements
 					DetailActivity.class);
 			intent.putExtra(DetailActivity.EXTRA_URL, link);
 			startActivity(intent);
-
+			
 		}
 	}
 
