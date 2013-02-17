@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Background Worker Test</string>
+    <string name="menu_settings">Settings</string>
+    <string name="timer">Timer</string>
+    
+    <string name="fragment_threadworker">Thread Worker</string>
+    <string name="fragment_retained">Retained Fragment</string>
+    <string name="fragment_asynctask">AsyncTask</string>
+    <string name="fragment_asynctaskloader">AsyncTaskLoader</string>
+    <string name="fragment_service_lbr">Service with LBR</string>
+    <string name="fragment_service_msg">Service with Messenger</string>
+    <string name="fragment_service_bus">Service with EventBus</string>
+
+</resources>
