@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">de.vogella.multiscreen</string>
+    <string name="menu_settings">Settings</string>
+    
+    <string name="normal_layout">Normal layout</string>
+    <string name="large_layout">Large layout</string>
+    <string name="right_panel">Right panel</string>
+    <string name="bottom_panel">Bottom panel</string>
+
+</resources>
