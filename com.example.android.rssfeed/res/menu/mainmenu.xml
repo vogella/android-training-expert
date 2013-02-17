@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action1"
+        android:showAsAction="ifRoom"
+        android:title="Refresh">
+    </item>
+    <item
+        android:id="@+id/action2"
+        android:showAsAction="ifRoom"
+        android:title="Really really long stuff">
+    </item>
+    <item
+        android:id="@+id/action3"
+        android:title="Settings">
+    </item>
+
+</menu>
