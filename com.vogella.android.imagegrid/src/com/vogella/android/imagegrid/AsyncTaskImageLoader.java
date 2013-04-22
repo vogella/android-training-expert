@@ -42,13 +42,41 @@ public class AsyncTaskImageLoader extends AsyncTask<String, Void, Bitmap> {
 
 	@Override
 	protected void onPostExecute(Bitmap bitmap) {
+		final Bitmap b = bitmap;
+		float dest = 0;
 		if (isCancelled()) {
 			bitmap = null;
 		}
 		if (ref != null && bitmap != null) {
 			final ImageView imageView = ref.get();
 			if (imageView != null) {
-				imageView.setImageBitmap(bitmap);
+				dest = 360;
+				if (imageView.getRotation() == 360) {
+					dest = 0;
+				}		
+				final float rotationX= imageView.getRotationX();
+				final float rotationY= imageView.getRotationY();
+				imageView.animate().rotation(dest).setDuration(1000).scaleX(2)
+				.scaleY(2).withEndAction(new Runnable() {
+
+					@Override
+					public void run() {
+						imageView.setImageBitmap(b);
+						imageView.animate()
+								.rotationXBy(100)
+								.rotation(
+										Math.abs(360 - imageView
+												.getRotation()))
+								.scaleX(1F).scaleY(1F)
+								.setDuration(1000).withEndAction(new Runnable() {
+									
+									@Override
+									public void run() {
+										imageView.animate().rotationX(rotationX).rotationY(rotationY).setDuration(1000);
+									}
+								});
+					}
+				});
 			}
 		}
 	}
