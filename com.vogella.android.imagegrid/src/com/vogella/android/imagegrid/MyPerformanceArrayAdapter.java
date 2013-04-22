@@ -1,6 +1,8 @@
 package com.vogella.android.imagegrid;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.vogella.android.imagegrid.AsyncTaskImageLoader.AsyncDrawable;
 public class MyPerformanceArrayAdapter extends ArrayAdapter {
 	private final Activity context;
 	private final String[] names;
+	private Bitmap placeHolder;
 
 	static class ViewHolder {
 		public ImageView image;
@@ -22,6 +25,7 @@ public class MyPerformanceArrayAdapter extends ArrayAdapter {
 		super(context, R.layout.rowlayout, names);
 		this.context = context;
 		this.names = names;
+		placeHolder = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
 	}
 
 	@Override
@@ -40,7 +44,7 @@ public class MyPerformanceArrayAdapter extends ArrayAdapter {
 		if (cancelPotentialWork(names[position], holder.image)) {
 			AsyncTaskImageLoader task = new AsyncTaskImageLoader(holder.image);
 			final AsyncDrawable asyncDrawable = new AsyncDrawable(
-					context.getResources(), null, task);
+					context.getResources(), placeHolder, task);
 			holder.image.setImageDrawable(asyncDrawable);
 			task.execute(names[position]);
 		}
