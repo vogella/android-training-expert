@@ -64,7 +64,6 @@ public class ImageLoader {
 		
 		if (bitmap != null) { // get from cache
 			view.setImageBitmap(bitmap);
-			System.out.println("from cache");
 			
 		} else { // load from Web
 			if (cancelPotentialWork(url, view)) {
