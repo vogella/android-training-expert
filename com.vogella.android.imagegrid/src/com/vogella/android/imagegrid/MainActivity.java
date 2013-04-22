@@ -12,7 +12,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		FragmentManager manager = getFragmentManager();
-		if (manager.findFragmentByTag("list")== null){
+		if (manager.findFragmentById(R.id.fragment) == null) {
 			manager.beginTransaction().add(R.id.fragment, new MyListFragment()).commit();
 		}
 	}
