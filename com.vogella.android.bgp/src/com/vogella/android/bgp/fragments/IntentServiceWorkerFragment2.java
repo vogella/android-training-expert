@@ -1,4 +1,4 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
 
 import android.content.Intent;
@@ -7,8 +7,8 @@ import android.os.Message;
 import android.os.Messenger;
 import android.view.View;
 
-import com.vogella.bgp.R;
-import com.vogella.bgp.WorkerIntentService2;
+import com.vogella.android.bgp.R;
+import com.vogella.android.bgp.WorkerIntentService2;
 
 /**
  * Service communicates with the Fragment using Messenger

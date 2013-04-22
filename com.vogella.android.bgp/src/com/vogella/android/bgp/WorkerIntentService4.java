@@ -1,4 +1,4 @@
-package com.vogella.bgp;
+package com.vogella.android.bgp;
 
 import android.app.IntentService;
 import android.content.Intent;

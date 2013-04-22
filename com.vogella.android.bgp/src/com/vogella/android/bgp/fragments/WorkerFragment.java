@@ -1,4 +1,4 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,9 +11,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.otto.Bus;
-import com.vogella.bgp.Constants;
-import com.vogella.bgp.R;
-import com.vogella.bgp.WorkerApp;
+import com.vogella.android.bgp.Constants;
+import com.vogella.android.bgp.R;
+import com.vogella.android.bgp.WorkerApp;
 
 public abstract class WorkerFragment extends Fragment implements OnClickListener {
 

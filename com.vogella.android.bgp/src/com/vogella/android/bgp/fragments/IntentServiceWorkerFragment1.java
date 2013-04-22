@@ -1,9 +1,9 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
-import static com.vogella.bgp.WorkerIntentService1.*;
+import static com.vogella.android.bgp.WorkerIntentService1.*;
 
-import com.vogella.bgp.R;
-import com.vogella.bgp.WorkerIntentService1;
+import com.vogella.android.bgp.R;
+import com.vogella.android.bgp.WorkerIntentService1;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

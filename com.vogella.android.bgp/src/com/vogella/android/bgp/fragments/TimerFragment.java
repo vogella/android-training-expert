@@ -1,4 +1,4 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,7 +9,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.vogella.bgp.R;
+import com.vogella.android.bgp.R;
 
 public class TimerFragment extends Fragment 
 	implements OnClickListener, Runnable {

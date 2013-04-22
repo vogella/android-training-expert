@@ -1,4 +1,4 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.view.View;
 
-import com.vogella.bgp.R;
+import com.vogella.android.bgp.R;
 
 public class AsyncTaskLoaderFragment extends WorkerFragment 
 	implements Loader.OnLoadCompleteListener<Object> {

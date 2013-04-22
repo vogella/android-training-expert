@@ -1,10 +1,10 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 
-import com.vogella.bgp.R;
+import com.vogella.android.bgp.R;
 
 public class ThreadWorkerFragment extends WorkerFragment {
 

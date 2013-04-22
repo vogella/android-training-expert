@@ -1,8 +1,8 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
 import java.lang.ref.WeakReference;
 
-import com.vogella.bgp.R;
+import com.vogella.android.bgp.R;
 
 import android.os.AsyncTask;
 import android.util.Log;

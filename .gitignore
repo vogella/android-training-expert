@@ -22,3 +22,7 @@ local.properties
 
 # Mac-files
 .DS_Store
+
+#Eclipse fiels
+.metadata
+bin/

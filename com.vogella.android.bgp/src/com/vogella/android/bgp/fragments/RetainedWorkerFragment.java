@@ -1,6 +1,6 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
-import com.vogella.bgp.R;
+import com.vogella.android.bgp.R;
 
 import android.os.Bundle;
 import android.os.Handler;

@@ -1,13 +1,13 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
 
 import android.content.Intent;
 import android.view.View;
 
 import com.squareup.otto.Subscribe;
-import com.vogella.bgp.R;
-import com.vogella.bgp.WorkerIntentService3;
-import com.vogella.bgp.WorkerIntentService3.StateEvent;
+import com.vogella.android.bgp.R;
+import com.vogella.android.bgp.WorkerIntentService3;
+import com.vogella.android.bgp.WorkerIntentService3.StateEvent;
 
 /**
  * Service communicates with the Fragment using Event Bus (Otto)

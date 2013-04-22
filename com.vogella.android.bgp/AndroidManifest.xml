@@ -9,14 +9,14 @@
         android:targetSdkVersion="14" />
 
     <application
-        android:name="com.vogella.bgp.WorkerApp"
+        android:name="com.vogella.android.bgp.WorkerApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
         <activity
-            android:name="com.vogella.bgp.ui.MainActivity"
+            android:name="com.vogella.android.bgp.ui.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,22 +25,22 @@
         </activity>
         
         <service
-            android:name="com.vogella.bgp.WorkerIntentService1"
+            android:name="com.vogella.android.bgp.WorkerIntentService1"
             android:exported="false"
              />
         
         <service
-            android:name="com.vogella.bgp.WorkerIntentService2"
+            android:name="com.vogella.android.bgp.WorkerIntentService2"
             android:exported="false"
              />
         
         <service
-            android:name="com.vogella.bgp.WorkerIntentService3"
+            android:name="com.vogella.android.bgp.WorkerIntentService3"
             android:exported="false"
              />
         
         <service
-            android:name="com.vogella.bgp.WorkerIntentService4"
+            android:name="com.vogella.android.bgp.WorkerIntentService4"
             android:exported="false"
              />
         

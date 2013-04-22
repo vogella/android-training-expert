@@ -1,4 +1,4 @@
-package com.vogella.bgp;
+package com.vogella.android.bgp;
 
 public interface Constants {
 

@@ -1,4 +1,4 @@
-package com.vogella.bgp.ui;
+package com.vogella.android.bgp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,16 +9,16 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 
-import com.vogella.bgp.R;
-import com.vogella.bgp.fragments.AsyncTaskLoaderFragment;
-import com.vogella.bgp.fragments.AsyncTaskWorkerFragment;
-import com.vogella.bgp.fragments.IntentServiceWorkerFragment1;
-import com.vogella.bgp.fragments.IntentServiceWorkerFragment2;
-import com.vogella.bgp.fragments.IntentServiceWorkerFragment3;
-import com.vogella.bgp.fragments.IntentServiceWorkerFragment4;
-import com.vogella.bgp.fragments.RetainedWorkerFragment;
-import com.vogella.bgp.fragments.ThreadWorkerFragment;
-import com.vogella.bgp.fragments.TimerFragment;
+import com.vogella.android.bgp.R;
+import com.vogella.android.bgp.fragments.AsyncTaskLoaderFragment;
+import com.vogella.android.bgp.fragments.AsyncTaskWorkerFragment;
+import com.vogella.android.bgp.fragments.IntentServiceWorkerFragment1;
+import com.vogella.android.bgp.fragments.IntentServiceWorkerFragment2;
+import com.vogella.android.bgp.fragments.IntentServiceWorkerFragment3;
+import com.vogella.android.bgp.fragments.IntentServiceWorkerFragment4;
+import com.vogella.android.bgp.fragments.RetainedWorkerFragment;
+import com.vogella.android.bgp.fragments.ThreadWorkerFragment;
+import com.vogella.android.bgp.fragments.TimerFragment;
 
 public class MainActivity extends FragmentActivity {
 

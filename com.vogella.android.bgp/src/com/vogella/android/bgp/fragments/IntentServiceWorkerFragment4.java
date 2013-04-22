@@ -1,4 +1,4 @@
-package com.vogella.bgp.fragments;
+package com.vogella.android.bgp.fragments;
 
 
 import android.content.Context;
@@ -10,8 +10,8 @@ import android.os.Messenger;
 import android.os.ResultReceiver;
 import android.view.View;
 
-import com.vogella.bgp.R;
-import com.vogella.bgp.WorkerIntentService4;
+import com.vogella.android.bgp.R;
+import com.vogella.android.bgp.WorkerIntentService4;
 
 /**
  * Service communicates with the Fragment using ResultReceiver
