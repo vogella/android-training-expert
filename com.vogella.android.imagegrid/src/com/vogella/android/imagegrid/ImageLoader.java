@@ -60,10 +60,10 @@ public class ImageLoader {
 	
 	/** load image from cache or from the Web */
 	public void loadImage(String url, ImageView view, Bitmap placeholderBitmap) {
-		Bitmap drawable = mMemoryCache.get(url);
+		Bitmap bitmap = mMemoryCache.get(url);
 		
-		if (drawable != null) { // get from cache
-			view.setImageBitmap(drawable);
+		if (bitmap != null) { // get from cache
+			view.setImageBitmap(bitmap);
 			System.out.println("from cache");
 			
 		} else { // load from Web
@@ -77,7 +77,7 @@ public class ImageLoader {
 		}
 	}
 	
-	public static boolean cancelPotentialWork(String url, ImageView imageView) {
+	private static boolean cancelPotentialWork(String url, ImageView imageView) {
 		final AsyncTaskImageLoader bitmapWorkerTask = getBitmapWorkerTask(imageView);
 		if (bitmapWorkerTask != null) {
 			final String bitmapData = bitmapWorkerTask.url;
