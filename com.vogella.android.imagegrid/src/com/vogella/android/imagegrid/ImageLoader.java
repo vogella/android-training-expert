@@ -59,18 +59,19 @@ public class ImageLoader {
 	}
 	
 	/** load image from cache or from the Web */
-	public void loadImage(String url, ImageView view, Bitmap placeholderBitmap) {
+	public void loadImage(String url, ImageView imageView, Bitmap placeholderBitmap) {
 		Bitmap bitmap = mMemoryCache.get(url);
 		
 		if (bitmap != null) { // get from cache
-			view.setImageBitmap(bitmap);
+			imageView.setImageBitmap(bitmap);
+			FancyAnimationRunner.runAnimation(imageView, bitmap);
 			
 		} else { // load from Web
-			if (cancelPotentialWork(url, view)) {
-				AsyncTaskImageLoader task = new AsyncTaskImageLoader(view);
-				Resources resources = view.getContext().getResources();
+			if (cancelPotentialWork(url, imageView)) {
+				AsyncTaskImageLoader task = new AsyncTaskImageLoader(imageView);
+				Resources resources = imageView.getContext().getResources();
 				final AsyncDrawable asyncDrawable = new AsyncDrawable(resources, placeholderBitmap, task);
-				view.setImageDrawable(asyncDrawable);
+				imageView.setImageDrawable(asyncDrawable);
 				task.execute(url, mMemoryCache);
 			}
 		}
