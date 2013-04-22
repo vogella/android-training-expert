@@ -1,10 +1,9 @@
 package com.vogella.android.bgp.fragments;
 
-import static com.vogella.android.bgp.WorkerIntentService1.*;
-
-import com.vogella.android.bgp.R;
-import com.vogella.android.bgp.WorkerIntentService1;
-
+import static com.vogella.android.bgp.WorkerIntentService1.EXT_STATE;
+import static com.vogella.android.bgp.WorkerIntentService1.ON_STATE_ACTION;
+import static com.vogella.android.bgp.WorkerIntentService1.STATE_DONE;
+import static com.vogella.android.bgp.WorkerIntentService1.STATE_WORKING;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +11,9 @@ import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
+
+import com.vogella.android.bgp.R;
+import com.vogella.android.bgp.WorkerIntentService1;
 
 /**
  * Service communicates with this fragment using 

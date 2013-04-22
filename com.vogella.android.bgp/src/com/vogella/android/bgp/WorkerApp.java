@@ -1,9 +1,9 @@
 package com.vogella.android.bgp;
 
-import com.squareup.otto.Bus;
-
 import android.app.Application;
 import android.util.Log;
+
+import com.squareup.otto.Bus;
 
 /**
  * Shared application class

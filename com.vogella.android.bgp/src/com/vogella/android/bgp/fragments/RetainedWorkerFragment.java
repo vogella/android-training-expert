@@ -1,12 +1,12 @@
 package com.vogella.android.bgp.fragments;
 
-import com.vogella.android.bgp.R;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
+
+import com.vogella.android.bgp.R;
 
 public class RetainedWorkerFragment extends WorkerFragment {
 

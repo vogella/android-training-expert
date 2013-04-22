@@ -1,7 +1,6 @@
 package com.vogella.android.bgp.fragments;
 
 import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 
 import com.vogella.android.bgp.R;

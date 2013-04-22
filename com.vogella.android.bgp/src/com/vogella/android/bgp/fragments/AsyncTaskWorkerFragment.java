@@ -2,12 +2,12 @@ package com.vogella.android.bgp.fragments;
 
 import java.lang.ref.WeakReference;
 
-import com.vogella.android.bgp.R;
-
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+
+import com.vogella.android.bgp.R;
 
 public class AsyncTaskWorkerFragment extends WorkerFragment {
 
