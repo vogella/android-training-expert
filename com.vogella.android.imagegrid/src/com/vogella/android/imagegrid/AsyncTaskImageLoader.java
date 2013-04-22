@@ -56,8 +56,9 @@ public class AsyncTaskImageLoader extends AsyncTask<String, Void, Bitmap> {
 				}		
 				final float rotationX= imageView.getRotationX();
 				final float rotationY= imageView.getRotationY();
-				imageView.animate().rotation(dest).setDuration(1000).scaleX(2)
-				.scaleY(2).withEndAction(new Runnable() {
+				float random1 = (float) Math.random()*3;
+				imageView.animate().rotation(dest).setDuration(1500).scaleX(random1)
+				.scaleY(random1).withEndAction(new Runnable() {
 
 					@Override
 					public void run() {
@@ -68,7 +69,7 @@ public class AsyncTaskImageLoader extends AsyncTask<String, Void, Bitmap> {
 										Math.abs(360 - imageView
 												.getRotation()))
 								.scaleX(1F).scaleY(1F)
-								.setDuration(1000).withEndAction(new Runnable() {
+								.setDuration(1500).withEndAction(new Runnable() {
 									
 									@Override
 									public void run() {
