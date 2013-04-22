@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-public class MyPerformanceArrayAdapter extends ArrayAdapter<String> {
+public class MyPerformanceArrayAdapter extends ArrayAdapter {
 	private final Activity context;
 	private final String[] names;
 

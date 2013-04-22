@@ -22,14 +22,14 @@ public class AsyncTaskImageLoader extends AsyncTask<String, Void, Bitmap> {
 	}
 	
 	private final WeakReference<ImageView> ref;
-	private String action = null;
+	private String url = null;
 
 	@Override
 	protected Bitmap doInBackground(String... params) {
-		action = params[0];
+		url = params[0];
 		URLConnection conn;
 		try {
-			conn = new URL("url").openConnection();
+			conn = new URL(url).openConnection();
 			conn.connect();
 			return BitmapFactory.decodeStream(conn.getInputStream());
 		} catch (MalformedURLException e) {
