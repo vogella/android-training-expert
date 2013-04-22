@@ -5,7 +5,7 @@ import android.widget.ImageView;
 
 public class FancyAnimationRunner {
 
-	public static void runAnimation(final ImageView imageView, final Bitmap bitmap) {
+	public static void runAnimationAndSetBitmap(final ImageView imageView, final Bitmap bitmap) {
 		float dest = 0;
 		dest = 360;
 		if (imageView.getRotation() == 360) {

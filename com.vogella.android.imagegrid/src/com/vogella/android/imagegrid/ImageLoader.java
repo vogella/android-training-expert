@@ -63,8 +63,8 @@ public class ImageLoader {
 		Bitmap bitmap = mMemoryCache.get(url);
 		
 		if (bitmap != null) { // get from cache
-			imageView.setImageBitmap(bitmap);
-			FancyAnimationRunner.runAnimation(imageView, bitmap);
+			//imageView.setImageBitmap(bitmap);
+			FancyAnimationRunner.runAnimationAndSetBitmap(imageView, bitmap);
 			
 		} else { // load from Web
 			if (cancelPotentialWork(url, imageView)) {
