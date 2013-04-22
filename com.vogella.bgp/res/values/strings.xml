@@ -11,6 +11,7 @@
     <string name="fragment_asynctaskloader">AsyncTaskLoader</string>
     <string name="fragment_service_lbr">Service with LBR</string>
     <string name="fragment_service_msg">Service with Messenger</string>
+    <string name="fragment_service_res">Service with ResultReceiver</string>
     <string name="fragment_service_bus">Service with EventBus</string>
 
 </resources>

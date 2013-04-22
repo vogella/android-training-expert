@@ -15,6 +15,7 @@ import com.vogella.bgp.fragments.AsyncTaskWorkerFragment;
 import com.vogella.bgp.fragments.IntentServiceWorkerFragment1;
 import com.vogella.bgp.fragments.IntentServiceWorkerFragment2;
 import com.vogella.bgp.fragments.IntentServiceWorkerFragment3;
+import com.vogella.bgp.fragments.IntentServiceWorkerFragment4;
 import com.vogella.bgp.fragments.RetainedWorkerFragment;
 import com.vogella.bgp.fragments.ThreadWorkerFragment;
 import com.vogella.bgp.fragments.TimerFragment;
@@ -34,6 +35,7 @@ public class MainActivity extends FragmentActivity {
 				IntentServiceWorkerFragment1.class,
 				IntentServiceWorkerFragment2.class,
 				IntentServiceWorkerFragment3.class,
+				IntentServiceWorkerFragment4.class,
 		};
 		
 		public MyFragmentPagerAdapter(FragmentManager fm) {

@@ -39,6 +39,11 @@
             android:exported="false"
              />
         
+        <service
+            android:name="com.vogella.bgp.WorkerIntentService4"
+            android:exported="false"
+             />
+        
     </application>
 
 </manifest>

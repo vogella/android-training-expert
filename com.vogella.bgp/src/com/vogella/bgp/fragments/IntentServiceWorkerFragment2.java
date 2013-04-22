@@ -11,7 +11,7 @@ import com.vogella.bgp.R;
 import com.vogella.bgp.WorkerIntentService2;
 
 /**
- * Service communicates with the Fragment using Messanger
+ * Service communicates with the Fragment using Messenger
  * @author sergej
  */
 public class IntentServiceWorkerFragment2 extends WorkerFragment {
@@ -26,7 +26,7 @@ public class IntentServiceWorkerFragment2 extends WorkerFragment {
 	@Override
 	public void onClick(View v) {
 		Intent intent = new Intent(getActivity(), WorkerIntentService2.class);
-		intent.putExtra("messanger", new Messenger(mHandler));
+		intent.putExtra("messenger", new Messenger(mHandler));
 		getActivity().startService(intent);
 	}
 
