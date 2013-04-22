@@ -6,23 +6,22 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import android.app.Fragment;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 public class AsyncTaskImageLoader extends AsyncTask<String, Void, Bitmap> {
-	
-	public AsyncTaskImageLoader(ImageView view){
+	private final WeakReference<ImageView> ref;
+	public String url = null;
+	public int data = 0;
+
+	public AsyncTaskImageLoader(ImageView view) {
 		ref = new WeakReference<ImageView>(view);
 	}
-	
-	private final WeakReference<ImageView> ref;
-	private String url = null;
 
 	@Override
 	protected Bitmap doInBackground(String... params) {
@@ -37,12 +36,15 @@ public class AsyncTaskImageLoader extends AsyncTask<String, Void, Bitmap> {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return  null;
+		return null;
 
 	}
 
 	@Override
 	protected void onPostExecute(Bitmap bitmap) {
+		if (isCancelled()) {
+			bitmap = null;
+		}
 		if (ref != null && bitmap != null) {
 			final ImageView imageView = ref.get();
 			if (imageView != null) {
@@ -50,4 +52,23 @@ public class AsyncTaskImageLoader extends AsyncTask<String, Void, Bitmap> {
 			}
 		}
 	}
+
+	static class AsyncDrawable extends BitmapDrawable {
+		private final WeakReference<AsyncTaskImageLoader> bitmapWorkerTaskReference;
+
+		public AsyncDrawable(Resources res, Bitmap bitmap,
+				AsyncTaskImageLoader bitmapWorkerTask) {
+			super(res, bitmap);
+			bitmapWorkerTaskReference = new WeakReference<AsyncTaskImageLoader>(
+					bitmapWorkerTask);
+		}
+
+		public AsyncTaskImageLoader getBitmapWorkerTask() {
+			return bitmapWorkerTaskReference.get();
+		}
+	}
+
+	
+
+
 }
