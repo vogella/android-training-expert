@@ -55,7 +55,7 @@ public class AsyncTaskImageLoader extends AsyncTask<Object, Void, Bitmap> {
 		if (bitmap != null) {
 			final ImageView imageView = ref.get();
 			if (imageView != null) {
-				FancyAnimationRunner.runAnimationAndSetBitmap(imageView, bitmap);
+				AnimationRunner.runAnimationAndSetBitmap(imageView, bitmap);
 			}
 		}
 	}

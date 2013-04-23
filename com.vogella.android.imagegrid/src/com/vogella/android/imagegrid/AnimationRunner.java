@@ -3,7 +3,7 @@ package com.vogella.android.imagegrid;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-public class FancyAnimationRunner {
+public class AnimationRunner {
 
 	public static void runAnimationAndSetBitmap(final ImageView imageView, final Bitmap bitmap) {
 		float dest = 0;
