@@ -1,4 +1,4 @@
-package com.example.android.rssfeedlibrary;
+package com.vogella.android.rssreader.utils;
 
 public class RssItem {
 	private String pubDate;

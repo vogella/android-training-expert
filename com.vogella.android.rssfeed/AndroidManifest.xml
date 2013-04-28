@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.rssfeed"
+    package="com.vogella.android.rssreader"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -25,13 +25,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailActivity"
+            android:name="com.vogella.android.rssreader.DetailActivity"
             android:label="Details" >
         </activity>
         <activity android:name="MyPreferenceActivity" >
         </activity>
 
-        <receiver android:name="com.vogella.rssreader.widget.RssfeedWidgetProvider" >
+        <receiver android:name="com.vogella.android.rssreader.widget.RssfeedWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -41,7 +41,7 @@
         </receiver>
 
         <service
-            android:name="com.vogella.rssreader.widget.RssfeedWidgetService"
+            android:name="com.vogella.android.rssreader.widget.RssfeedWidgetService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
         

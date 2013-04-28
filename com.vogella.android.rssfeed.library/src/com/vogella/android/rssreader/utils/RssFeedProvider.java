@@ -1,4 +1,4 @@
-package com.example.android.rssfeedlibrary;
+package com.vogella.android.rssreader.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package com.vogella.rssreader.widget;
+package com.vogella.android.rssreader.widget;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,8 +7,8 @@ import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 import android.widget.RemoteViewsService.RemoteViewsFactory;
 
-import com.example.android.rssfeed.R;
-import com.example.android.rssfeedlibrary.RssItem;
+import com.vogella.android.rssreader.R;
+import com.vogella.android.rssreader.utils.RssItem;
 
 public class RssfeedWidgetService extends RemoteViewsService {
 

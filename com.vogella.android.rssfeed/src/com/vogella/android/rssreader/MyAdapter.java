@@ -1,4 +1,4 @@
-package com.example.android.rssfeed;
+package com.vogella.android.rssreader;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.android.rssfeedlibrary.RssItem;
+import com.vogella.android.rssreader.utils.RssItem;
 
 public class MyAdapter extends ArrayAdapter<RssItem> {
 

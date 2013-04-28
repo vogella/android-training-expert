@@ -1,4 +1,4 @@
-package com.example.android.rssfeed;
+package com.vogella.android.rssreader;
 
 import android.app.Activity;
 import android.app.FragmentManager;

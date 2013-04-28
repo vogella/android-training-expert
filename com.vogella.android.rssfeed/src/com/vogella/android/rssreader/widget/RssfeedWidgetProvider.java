@@ -1,4 +1,4 @@
-package com.vogella.rssreader.widget;
+package com.vogella.android.rssreader.widget;
 
 import java.util.Date;
 import java.util.List;
@@ -15,10 +15,10 @@ import android.os.HandlerThread;
 import android.text.format.DateFormat;
 import android.widget.RemoteViews;
 
-import com.example.android.rssfeed.R;
-import com.example.android.rssfeed.RssfeedActivity;
-import com.example.android.rssfeedlibrary.RssFeedProvider;
-import com.example.android.rssfeedlibrary.RssItem;
+import com.vogella.android.rssreader.R;
+import com.vogella.android.rssreader.RssfeedActivity;
+import com.vogella.android.rssreader.utils.RssFeedProvider;
+import com.vogella.android.rssreader.utils.RssItem;
 
 public class RssfeedWidgetProvider extends AppWidgetProvider {
 

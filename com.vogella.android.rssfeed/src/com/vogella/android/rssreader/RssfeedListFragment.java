@@ -1,4 +1,4 @@
-package com.example.android.rssfeed;
+package com.vogella.android.rssreader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.android.rssfeedlibrary.RssFeedProvider;
-import com.example.android.rssfeedlibrary.RssItem;
+import com.vogella.android.rssreader.utils.RssFeedProvider;
+import com.vogella.android.rssreader.utils.RssItem;
 
 public class RssfeedListFragment extends ListFragment {
 

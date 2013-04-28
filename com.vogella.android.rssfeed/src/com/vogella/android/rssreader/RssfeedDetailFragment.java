@@ -1,4 +1,4 @@
-package com.example.android.rssfeed;
+package com.vogella.android.rssreader;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -38,9 +38,8 @@ public class RssfeedDetailFragment extends Fragment {
 	}
 
 	public void setUrl(String url) {
-		if (webview == null) {
-			getArguments().putString("url", url);
-		} else {
+		getArguments().putString("url", url);
+		if (webview != null) {
 			webview.setInitialScale(50);
 			webview.loadUrl(url);
 		}

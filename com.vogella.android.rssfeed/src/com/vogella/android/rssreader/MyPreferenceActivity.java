@@ -1,4 +1,4 @@
-package com.example.android.rssfeed;
+package com.vogella.android.rssreader;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
