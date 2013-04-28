@@ -14,16 +14,16 @@ import android.widget.ListView;
 import com.example.android.rssfeedlibrary.RssFeedProvider;
 import com.example.android.rssfeedlibrary.RssItem;
 
-public class RssFeedListFragment extends ListFragment {
+public class RssfeedListFragment extends ListFragment {
 
 	public static interface OnItemSelectedListener {
 		public void onRssItemSelected(String link);
 	}
 
 	private static class ParseTask extends AsyncTask<String, Void, List<RssItem>> {
-		private RssFeedListFragment fragment;
+		private RssfeedListFragment fragment;
 
-		public void setFragment(RssFeedListFragment fragment) {
+		public void setFragment(RssfeedListFragment fragment) {
 			this.fragment = fragment;
 		}
 

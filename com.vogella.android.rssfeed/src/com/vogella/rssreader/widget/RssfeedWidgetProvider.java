@@ -58,7 +58,7 @@ public class RssfeedWidgetProvider extends AppWidgetProvider {
             String link = intent.getStringExtra(EXT_LINK);
             
             Intent launchIntent = new Intent(context, RssfeedActivity.class);
-            launchIntent.putExtra("link", link);
+            launchIntent.putExtra(RssfeedActivity.EXTRA_URL, link);
             launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(launchIntent);
             

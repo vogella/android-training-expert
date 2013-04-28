@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 
-public class RssFeedDetailFragment extends Fragment {
+public class RssfeedDetailFragment extends Fragment {
 
 	private WebView webview;
 
-	public static RssFeedDetailFragment instantiate(String rssItemUrl) {
+	public static RssfeedDetailFragment instantiate(String rssItemUrl) {
 		// create instance
-		RssFeedDetailFragment fragment = new RssFeedDetailFragment();
+		RssfeedDetailFragment fragment = new RssfeedDetailFragment();
 		
 		// initialize and store input argument
 		if (rssItemUrl != null) {

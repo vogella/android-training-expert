@@ -22,11 +22,11 @@ import android.view.MenuItem;
  * @author sergej shafarenka
  */
 public class RssfeedActivity extends Activity implements
-		RssFeedListFragment.OnItemSelectedListener {
+		RssfeedListFragment.OnItemSelectedListener {
 
 	public static final String TAG_LIST = "list";
 	public static final String TAG_DETAIL = "detail";
-	public static final String EXT_URL = "url";
+	public static final String EXTRA_URL = "url";
 	
 	private boolean isOnePaneLayout;
 	private String selectedRssItemUrl;
@@ -41,7 +41,13 @@ public class RssfeedActivity extends Activity implements
 		
 		// read last selected RSS item URL, if such
 		if (savedInstanceState != null) {
-			selectedRssItemUrl = savedInstanceState.getString(EXT_URL);
+			selectedRssItemUrl = savedInstanceState.getString(EXTRA_URL);
+		} else {
+			// check whether we were called with a URL extra
+			String url = getIntent().getStringExtra(EXTRA_URL);
+			if (url != null) {
+				selectedRssItemUrl = url;
+			}
 		}
 		
 		addListFragment();
@@ -55,24 +61,18 @@ public class RssfeedActivity extends Activity implements
 			}
 		}
 		
-		/*
-		String link = getIntent().getStringExtra("link");
-		if (link != null) {
-			onRssItemSelected(link);
-		}
-		*/
 	}
 
 	private void addListFragment() {
 		
 		// find list fragment first
 		FragmentManager fm = getFragmentManager();
-		RssFeedListFragment listFragment = 
-				(RssFeedListFragment) fm.findFragmentByTag(TAG_LIST);
+		RssfeedListFragment listFragment = 
+				(RssfeedListFragment) fm.findFragmentByTag(TAG_LIST);
 		
 		if (listFragment == null) {
 			// create new list fragment
-			listFragment = new RssFeedListFragment();
+			listFragment = new RssfeedListFragment();
 		
 			// add list fragment to the layout
 			fm.beginTransaction()
@@ -89,12 +89,12 @@ public class RssfeedActivity extends Activity implements
 		
 		// find detail fragment first
 		FragmentManager fm = getFragmentManager();
-		RssFeedDetailFragment detailFragment =
-				(RssFeedDetailFragment) fm.findFragmentByTag(TAG_DETAIL);
+		RssfeedDetailFragment detailFragment =
+				(RssfeedDetailFragment) fm.findFragmentByTag(TAG_DETAIL);
 
 		if (detailFragment == null) {
 			// create new detail fragment
-			detailFragment = RssFeedDetailFragment.instantiate(rssItemUrl);
+			detailFragment = RssfeedDetailFragment.instantiate(rssItemUrl);
 			
 			// add fragment to the layout
 			addDetailFragment(detailFragment, containerId, addToBackStack, fm);
@@ -114,7 +114,7 @@ public class RssfeedActivity extends Activity implements
 		
 	}
 	
-	private static void addDetailFragment(RssFeedDetailFragment detailFragment, int containerId, boolean addToBackStack, FragmentManager fm) {
+	private static void addDetailFragment(RssfeedDetailFragment detailFragment, int containerId, boolean addToBackStack, FragmentManager fm) {
 		FragmentTransaction trx = fm.beginTransaction();
 		if (addToBackStack) {
 			trx.replace(containerId, detailFragment, TAG_DETAIL);
@@ -129,7 +129,7 @@ public class RssfeedActivity extends Activity implements
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		if (selectedRssItemUrl != null) {
-			outState.putString(EXT_URL, selectedRssItemUrl);
+			outState.putString(EXTRA_URL, selectedRssItemUrl);
 		}
 	}
 	
