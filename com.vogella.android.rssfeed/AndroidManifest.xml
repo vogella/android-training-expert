@@ -44,6 +44,7 @@
             android:name="com.vogella.rssreader.widget.RssfeedWidgetService"
             android:exported="false"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
+        
     </application>
 
 </manifest>

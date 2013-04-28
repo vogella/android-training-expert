@@ -2,41 +2,137 @@ package com.example.android.rssfeed;
 
 import android.app.Activity;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * RSS Feed Activity is capable to handle two layouts:
+ *  - one pane layout
+ *  - two pane layout
+ * 
+ * In one pane layout both the list and detail fragments are shown in a single
+ * container replacing each other.
+ * 
+ * In two pane layout list fragment takes left container, while details view 
+ * takes right one.
+ * 
+ * @author sergej shafarenka
+ */
 public class RssfeedActivity extends Activity implements
-		MyListFragment.OnItemSelectedListener {
+		RssFeedListFragment.OnItemSelectedListener {
 
-	private boolean isInOnePaneLayout;
+	public static final String TAG_LIST = "list";
+	public static final String TAG_DETAIL = "detail";
+	public static final String EXT_URL = "url";
+	
+	private boolean isOnePaneLayout;
+	private String selectedRssItemUrl;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rssfeed);
 		
-		isInOnePaneLayout = findViewById(R.id.container) != null;
+		// detect layout
+		isOnePaneLayout = findViewById(R.id.right_container) == null;
 		
-		if (isInOnePaneLayout) {
-			FragmentManager fm = getFragmentManager();
-			MyListFragment fragment =
-					(MyListFragment) fm.findFragmentByTag("list");
-			if (fragment == null) {
-				fragment = new MyListFragment();
-				fm.beginTransaction()
-					.add(R.id.container, fragment, "list").commit();
+		// read last selected RSS item URL, if such
+		if (savedInstanceState != null) {
+			selectedRssItemUrl = savedInstanceState.getString(EXT_URL);
+		}
+		
+		addListFragment();
+
+		if (selectedRssItemUrl != null) {
+			if (isOnePaneLayout) {
+				showDetailFragment(R.id.left_container, selectedRssItemUrl, true);
+			} else {
+				getFragmentManager().popBackStackImmediate();
+				showDetailFragment(R.id.right_container, selectedRssItemUrl, false);
 			}
 		}
 		
+		/*
 		String link = getIntent().getStringExtra("link");
 		if (link != null) {
 			onRssItemSelected(link);
 		}
-		
+		*/
 	}
 
+	private void addListFragment() {
+		
+		// find list fragment first
+		FragmentManager fm = getFragmentManager();
+		RssFeedListFragment listFragment = 
+				(RssFeedListFragment) fm.findFragmentByTag(TAG_LIST);
+		
+		if (listFragment == null) {
+			// create new list fragment
+			listFragment = new RssFeedListFragment();
+		
+			// add list fragment to the layout
+			fm.beginTransaction()
+				.add(R.id.left_container, listFragment, TAG_LIST)
+				.commit();
+
+			// start loading data
+			listFragment.updateListContent();
+		}
+
+	}
+	
+	private void showDetailFragment(int containerId, String rssItemUrl, boolean addToBackStack) {
+		
+		// find detail fragment first
+		FragmentManager fm = getFragmentManager();
+		RssFeedDetailFragment detailFragment =
+				(RssFeedDetailFragment) fm.findFragmentByTag(TAG_DETAIL);
+
+		if (detailFragment == null) {
+			// create new detail fragment
+			detailFragment = RssFeedDetailFragment.instantiate(rssItemUrl);
+			
+			// add fragment to the layout
+			addDetailFragment(detailFragment, containerId, addToBackStack, fm);
+			
+		} else if (detailFragment.getId() != containerId) {
+				
+			// remove fragment from old container
+			fm.beginTransaction().remove(detailFragment).commit();
+			fm.executePendingTransactions();
+			
+			// add fragment to the new container
+			addDetailFragment(detailFragment, containerId, addToBackStack, fm);
+			
+		} // else, fragment is already at the right place
+		
+		detailFragment.setUrl(rssItemUrl);
+		
+	}
+	
+	private static void addDetailFragment(RssFeedDetailFragment detailFragment, int containerId, boolean addToBackStack, FragmentManager fm) {
+		FragmentTransaction trx = fm.beginTransaction();
+		if (addToBackStack) {
+			trx.replace(containerId, detailFragment, TAG_DETAIL);
+			trx.addToBackStack(null);
+		} else {
+			trx.add(containerId, detailFragment, TAG_DETAIL);
+		}
+		trx.commit();
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		if (selectedRssItemUrl != null) {
+			outState.putString(EXT_URL, selectedRssItemUrl);
+		}
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
@@ -48,8 +144,8 @@ public class RssfeedActivity extends Activity implements
 		switch (item.getItemId()) {
 
 		case R.id.action_refresh:
-			
-			if (isInOnePaneLayout) {
+			/*
+			if (isOnePaneLayout) {
 				MyListFragment fragment = (MyListFragment) 
 						getFragmentManager().findFragmentByTag("list");
 				fragment.updateListContent();
@@ -58,7 +154,7 @@ public class RssfeedActivity extends Activity implements
 						getFragmentManager().findFragmentById(R.id.list);
 				fragment.updateListContent();
 			}
-			
+			*/
 			break;
 		case R.id.action_settings:
 			Intent intent = new Intent(this, MyPreferenceActivity.class);
@@ -73,25 +169,13 @@ public class RssfeedActivity extends Activity implements
 	@Override
 	public void onRssItemSelected(String link) {
 		
-		FragmentManager fm = getFragmentManager();
-		
-		if (isInOnePaneLayout) {
-			DetailFragment fragment = new DetailFragment();
-			
-			Bundle bundle = new Bundle();
-			bundle.putString("link", link);
-			fragment.setArguments(bundle);
-			
-			fm.beginTransaction()
-				.replace(R.id.container, fragment)
-				.addToBackStack(null)
-				.commit();
-			
+		if (isOnePaneLayout) {
+			showDetailFragment(R.id.left_container, link, true);
 		} else {
-			DetailFragment fragment = 
-					(DetailFragment) fm.findFragmentById(R.id.detail);
-			fragment.setText(link);
+			showDetailFragment(R.id.right_container, link, false);
 		}
 		
+		// store selected URL
+		selectedRssItemUrl = link;
 	}
 }

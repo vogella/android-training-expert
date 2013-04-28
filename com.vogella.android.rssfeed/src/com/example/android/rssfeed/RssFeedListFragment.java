@@ -7,47 +7,23 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.android.rssfeedlibrary.RssFeedProvider;
 import com.example.android.rssfeedlibrary.RssItem;
 
-public class MyListFragment extends ListFragment {
-	private OnItemSelectedListener listener;
-	ParseTask parseTask;
+public class RssFeedListFragment extends ListFragment {
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		List<RssItem> list = new ArrayList<RssItem>();
-		MyAdapter adapter = new MyAdapter(getActivity(), android.R.layout.simple_list_item_1, list);
-		setListAdapter(adapter);
-		setRetainInstance(true);
-	}
-
-	/*
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater
-				.inflate(R.layout.fragment_rsslist_overview, container, false);
-		return view;
-	}
-	 */
-	
-	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		RssItem item = (RssItem) getListAdapter().getItem(position);
-		updateDetail(item);
+	public static interface OnItemSelectedListener {
+		public void onRssItemSelected(String link);
 	}
 
 	private static class ParseTask extends AsyncTask<String, Void, List<RssItem>> {
-		private MyListFragment fragment;
+		private RssFeedListFragment fragment;
 
-		public void setFragment(MyListFragment fragment) {
+		public void setFragment(RssFeedListFragment fragment) {
 			this.fragment = fragment;
 		}
 
@@ -62,6 +38,25 @@ public class MyListFragment extends ListFragment {
 			fragment.setListContent(result);
 		}
 	}
+	
+	private OnItemSelectedListener listener;
+	private ParseTask parseTask;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
+		MyAdapter adapter = new MyAdapter(getActivity(), 
+				android.R.layout.simple_list_item_1,
+				new ArrayList<RssItem>());
+		setListAdapter(adapter);
+	}
+
+	@Override
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		RssItem item = (RssItem) getListAdapter().getItem(position);
+		updateDetail(item);
+	}
 
 	public void updateListContent() {
 		if (parseTask == null) {
@@ -71,16 +66,13 @@ public class MyListFragment extends ListFragment {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setListContent(List<RssItem> result) {
-		ArrayAdapter listAdapter = (ArrayAdapter) getListAdapter();
+		ArrayAdapter<RssItem> listAdapter = (ArrayAdapter<RssItem>) getListAdapter();
 		listAdapter.clear();
 		listAdapter.addAll(result);
 		parseTask.setFragment(null);
 		parseTask = null;
-	}
-
-	public interface OnItemSelectedListener {
-		public void onRssItemSelected(String link);
 	}
 
 	@Override

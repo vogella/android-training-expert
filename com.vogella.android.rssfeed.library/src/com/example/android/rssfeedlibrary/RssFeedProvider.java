@@ -12,6 +12,9 @@ import android.util.Log;
 import android.util.Xml;
 
 public class RssFeedProvider {
+	
+	private static final boolean DEBUG = false;
+	
 	static final String PUB_DATE = "pubDate";
 	static final String DESCRIPTION = "description";
 	static final String CHANNEL = "channel";
@@ -38,29 +41,29 @@ public class RssFeedProvider {
 				case XmlPullParser.START_TAG:
 					name = parser.getName();
 					if (name.equalsIgnoreCase(ITEM)) {
-						Log.i("new item", "Create new item");
+						if (DEBUG) Log.i("new item", "Create new item");
 						item = new RssItem();
 					} else if (item != null) {
 						if (name.equalsIgnoreCase(LINK)) {
-							Log.i("Attribute", "setLink");
+							if (DEBUG) Log.i("Attribute", "setLink");
 							item.setLink(parser.nextText());
 						} else if (name.equalsIgnoreCase(DESCRIPTION)) {
-							Log.i("Attribute", "description");
+							if (DEBUG) Log.i("Attribute", "description");
 							item.setDescription(parser.nextText().trim());
 						} else if (name.equalsIgnoreCase(PUB_DATE)) {
-							Log.i("Attribute", "date");
+							if (DEBUG) Log.i("Attribute", "date");
 							item.setPubDate(parser.nextText());
 						} else if (name.equalsIgnoreCase(TITLE)) {
-							Log.i("Attribute", "title");
+							if (DEBUG) Log.i("Attribute", "title");
 							item.setTitle(parser.nextText().trim());
 						}
 					}
 					break;
 				case XmlPullParser.END_TAG:
 					name = parser.getName();
-					Log.i("End tag", name);
+					if (DEBUG) Log.i("End tag", name);
 					if (name.equalsIgnoreCase(ITEM) && item != null) {
-						Log.i("Added", item.toString());
+						if (DEBUG) Log.i("Added", item.toString());
 						list.add(item);
 					} else if (name.equalsIgnoreCase(CHANNEL)) {
 						done = true;
