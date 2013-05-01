@@ -6,12 +6,13 @@ Exercise 1:
 
 Steps:
  	1. Put a breakpoint in MainActivity.onCreate(Bundle savedInstanceState).
- 	2. Launch applications in DEBUG mode.
- 	3. Execute CountryUtils.getCountries() statement and check the value of 
+ 	2. Launch applications normally
+ 	3. Realizing that their is a problem, you switch Debug mode on in the DDMS perspective
+ 	4. Execute CountryUtils.getCountries() statement and check the value of 
  	   "countries" variable. If you believe the value is incorrect, use "Step into" 
  	   debug function to find the issue.
- 	4. Fix the issue.
- 	5. Launch the application and make sure the list of countries is shown correctly.
+ 	5. Fix the issue.
+ 	6. Launch the application and make sure the list of countries is shown correctly.
 
 
 Exercise 2:
