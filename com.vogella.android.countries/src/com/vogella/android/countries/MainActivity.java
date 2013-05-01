@@ -11,13 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.vogella.android.debugging.R;
-
 /** This activity shows a list of countries registered in the system. */
 public class MainActivity extends ListActivity {
 
 	/** Adapter showing a list of strings */
-	private static final class StringListAdapter extends ArrayAdapter<String> {
+	static final class StringListAdapter extends ArrayAdapter<String> {
 		public StringListAdapter(Context context, List<String> items) {
 			super(context, android.R.layout.simple_list_item_1, android.R.id.text1, items);
 		}
@@ -36,7 +34,7 @@ public class MainActivity extends ListActivity {
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		String item = (String) getListAdapter().getItem(++position);
+		String item = (String) getListAdapter().getItem(position);
 		Toast.makeText(this, "Selected: " + item, Toast.LENGTH_SHORT).show();
 	}
 	

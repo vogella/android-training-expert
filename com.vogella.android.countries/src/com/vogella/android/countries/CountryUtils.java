@@ -25,7 +25,7 @@ public class CountryUtils {
 			String country = locale.getDisplayCountry();
 			
 			// add country if display name is not empty
-			if (TextUtils.isEmpty(country)) {
+			if (!TextUtils.isEmpty(country)) {
 				countries.add(country);
 			}
 		}
