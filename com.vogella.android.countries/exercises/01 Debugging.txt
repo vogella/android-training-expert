@@ -6,7 +6,7 @@ Exercise 1:
 
 Steps:
  	1. Put a breakpoint in MainActivity.onCreate(Bundle savedInstanceState).
- 	2. Launch applications normally
+ 	2. Launch the application normally
  	3. Realizing that their is a problem, you switch Debug mode on in the DDMS perspective
  	4. Execute CountryUtils.getCountries() statement and check the value of 
  	   "countries" variable. If you believe the value is incorrect, use "Step into" 
