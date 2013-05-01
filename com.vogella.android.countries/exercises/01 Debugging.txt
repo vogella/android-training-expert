@@ -5,9 +5,11 @@ Exercise 1:
 	empty strings.
 
 Steps:
- 	1. Put a breakpoint in MainActivity.onCreate(Bundle savedInstanceState).
- 	2. Launch the application normally
- 	3. Realizing that their is a problem, you switch Debug mode on in the DDMS perspective
+ 	1. Launch the application normally.
+ 	2. Realizing that their is a problem, you switch Debug mode on in the DDMS
+ 	   perspective.
+	3. Put a breakpoint in MainActivity.onCreate(Bundle savedInstanceState) and
+	   re-launch the activity.
  	4. Execute CountryUtils.getCountries() statement and check the value of 
  	   "countries" variable. If you believe the value is incorrect, use "Step into" 
  	   debug function to find the issue.
