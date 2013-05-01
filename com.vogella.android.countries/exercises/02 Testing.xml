@@ -1,0 +1,34 @@
+Exercise 1:
+-----------
+	Create Android test project. In this exercise we will create new Android
+	Test Project and locate it under com.vogella.android.countries/test folder.
+
+Steps:
+	1. Open menu File - New - Other … - Android / Android Test Project
+	2. * Project Name: “com.vogella.android.countries-test”
+	     Uncheck “Use default location”
+         Choose location “<workspace>/com.vogella.android.countries/tests”
+         Press Next
+       * An existing Android project: “com.vogella.android.countries”
+	     Press Next
+	   * Choose “Android 4.2.2”
+	     Press Finish
+	     
+	Note: Eclipse creates “com.vogella.android.countries-test-test” folder 
+	      under “com.vogella.android.countries” project. This is a bug in 
+	      Eclipse. To fix this we will rename this folder to “tests” as 
+	      following.
+	
+	3. Right mouse click on “com.vogella.android.countries-test-test” folder 
+	   - Refactor - Rename - Enter new name “tests” - press OK.
+	
+	Note: Project “com.vogella.android.countries-test” will disappear from the
+	      Eclipse workspace. Now we need to import our test project again as
+	      following.
+	      
+	4. File - Import - Existing Project into Workspace - Select root directory 
+	   / Browse - choose “<workspace>/com.vogella.android.countries/tests” 
+	   location - press Finish.
+	   
+	   New project “com.vogella.android.countries-test” will appear in your
+	   workspace. We are done.
