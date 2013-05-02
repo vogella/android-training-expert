@@ -60,17 +60,3 @@ Steps:
 	   of com.vogella.android.countries-test.
 	2. Solve all TODO's in the test file.
 	3. Execute all tests and make sure test case runs with no errors.
-	
-
-Exercise 4:
------------
-	In this exercise we will create an Android Unit Test for CountriesApp class.
-
-Steps:
-	1. Open "com.vogella.android.countries-test" project. We will continue to work with 
-	   it in this exercise.
-	2. Create new CountriesAppTestCase class by extending 
-	   ApplicationTestCase<CountriesApp>. Locate new class under 
-	   com.vogella.android.countries package.
-	3. Overwrite protected void setUp() method.
-	4. Inside setUp() method create new instance of RenamingDelegatingContext. 

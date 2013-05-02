@@ -29,4 +29,5 @@ public class SimpleAndroidTestCase extends AndroidTestCase {
 		assertSame(view, view2);
 		
 	}
+	
 }
