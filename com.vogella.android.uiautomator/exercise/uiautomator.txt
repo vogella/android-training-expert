@@ -1,0 +1,30 @@
+
+Exercise 1:
+	Build, deploy and launch com.vogella.android.uiautomator project
+
+Steps:
+	1. Open a command line console and type "ant -version". You should be able to see
+	   output similar to this one "Apache Ant(TM) version 1.8.2 compiled on June 3 2011".
+	   This means Apache Ant is already installed and configured on your system. If you 
+	   don't see this message, you need to download Ant from http://ant.apache.org/ and
+	   add it to the executable PATH.
+	2. Open in command line console the root folder of this project.
+	3. Build the project by calling "and build" command.
+	4. Make sure you have a running Android Emulator. Launch it if you don't. Use 
+	   Android 4.2 for better compatibility with uiautomator.
+	5. Push the jar file you created in step 3 to the Emulator using following command:
+	   "adb push bin/com.vogella.android.uiautomator.jar /data/local/tmp/tests.jar"
+	6. Launch uiautomator tests with the following command: 
+	   "adb shell uiautomator runtest tests.jar -c com.vogella.android.uiautomator.SystemSettingsTestCase"
+	7. Once tests are executed you should see following message in the console: "OK (1 test)"
+
+Exercise 2:
+	By learning how "testSettingsAppAvailable()" is created, create a new 
+	testSlideScreenLockEnabled() test which checks "Screen lock" setting value. "Screen
+	lock" setting is located under Settings - Security - "Screen lock". Your test must 
+	assert that "Screen lock" value is equal to "PIN". The test must fail otherwise. 
+
+	Execute the test with a default value (which is in most cases equal to "Slide"). Make 
+	sure test fails. You can see test execution result in the console. Then change "Screen 
+	lock" value to "PIN" and re-launch the test. If test passes this time with "OK", you've
+	done everything right. Congratulation! 

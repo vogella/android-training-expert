@@ -1,6 +1,0 @@
-android create uitest-project -n com.vogella.android.uiautomator -t 1 -p .
-ant clean
-ant build
-cp bin/com.vogella.android.uiautomator.jar  simple.jar
-adb push simple.jar /data/local/tmp
-adb shell uiautomator runtest simple.jar -c com.vogella.android.uiautomator.LaunchSettings

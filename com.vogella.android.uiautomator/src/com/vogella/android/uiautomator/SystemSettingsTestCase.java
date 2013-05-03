@@ -1,22 +1,25 @@
 package com.vogella.android.uiautomator;
 
+import android.widget.TextView;
+
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiScrollable;
 import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
-public class LaunchSettings extends UiAutomatorTestCase {
-	public void testDemo() throws UiObjectNotFoundException {
+public class SystemSettingsTestCase extends UiAutomatorTestCase {
+	
+	public void testSettingsAppAvailable() throws UiObjectNotFoundException {
 
 		// Simulate a short press on the HOME button.
 		getUiDevice().pressHome();
 
-		// We’re now in the home screen. Next, we want to simulate
+		// We are now in the home screen. Next, we want to simulate
 		// a user bringing up the All Apps screen.
 		// If you use the uiautomatorviewer tool to capture a snapshot
-		// of the Home screen, notice that the All Apps button’s
-		// content-description property has the value “Apps”. We can
+		// of the Home screen, notice that the All Apps button�
+		// content-description property has the value "Apps". We can
 		// use this property to create a UiSelector to find the button.
 		UiObject allAppsButton = new UiObject(
 				new UiSelector().description("Apps"));
@@ -27,7 +30,7 @@ public class LaunchSettings extends UiAutomatorTestCase {
 		// In the All Apps screen, the Settings app is located in
 		// the Apps tab. To simulate the user bringing up the Apps tab,
 		// we create a UiSelector to find a tab with the text
-		// label “Apps”.
+		// label "Apps".
 		UiObject appsTab = new UiObject(new UiSelector().text("Apps"));
 
 		// Simulate a click to enter the Apps tab.
@@ -45,9 +48,9 @@ public class LaunchSettings extends UiAutomatorTestCase {
 		// Create a UiSelector to find the Settings app and simulate
 		// a user click to launch the app.
 		UiObject settingsApp = appViews
-				.getChildByText(new UiSelector()
-						.className(android.widget.TextView.class.getName()),
-						"Settings");
+			.getChildByText(new UiSelector()
+			.className(TextView.class.getName()),
+			"Settings");
 		settingsApp.clickAndWaitForNewWindow();
 
 		// Validate that the package name is the expected one
@@ -55,4 +58,5 @@ public class LaunchSettings extends UiAutomatorTestCase {
 				new UiSelector().packageName("com.android.settings"));
 		assertTrue("Unable to detect Settings", settingsValidation.exists());
 	}
+	
 }
