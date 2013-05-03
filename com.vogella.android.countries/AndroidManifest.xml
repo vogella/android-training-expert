@@ -9,16 +9,14 @@
         android:targetSdkVersion="17" />
 
     <application
+        android:name="com.vogella.android.countries.CountriesApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:name="com.vogella.android.countries.CountriesApp" 
-        >
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.vogella.android.countries.MainActivity"
-            android:label="@string/app_name"
-            android:permission="android.permission.VIBRATE">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -6,7 +6,7 @@ Exercise 1:
 
 Steps:
  	1. Launch the application normally.
- 	2. Realizing that their is a problem, you switch Debug mode on in the DDMS
+ 	2. Realizing that there is a problem, you switch Debug mode on in the DDMS
  	   perspective.
 	3. Put a breakpoint in MainActivity.onCreate(Bundle savedInstanceState) and
 	   re-launch the activity.
