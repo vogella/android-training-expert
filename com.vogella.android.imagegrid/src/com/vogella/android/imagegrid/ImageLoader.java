@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.LruCache;
 import android.widget.ImageView;
@@ -14,32 +15,34 @@ import com.vogella.android.imagegrid.AsyncTaskImageLoader.AsyncDrawable;
 
 /**
  * Web image loader with LruCache.
+ * 
  * @author sergej
  */
 public class ImageLoader {
 
 	private static final String TAG = "headless";
 	private static final int MEM_CACHE_SIZE = 4 * 1024 * 1024; // 4MB
-	
+
 	/** Retained headless fragment holding the instance of ImageLoader */
 	public static class RetainedHeadlessFragment extends Fragment {
 		private ImageLoader mImageLoader = new ImageLoader();
 
-		@Override public void onCreate(Bundle savedInstanceState) {
+		@Override
+		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setRetainInstance(true);
 		}
-		
+
 		public ImageLoader getImageLoader() {
 			return mImageLoader;
 		}
 	}
-	
+
 	/** Static methods for accessing current ImageLoader (single per activity) */
 	public static ImageLoader getInstance(Activity activity) {
 		FragmentManager fm = activity.getFragmentManager();
-		RetainedHeadlessFragment fragment = (RetainedHeadlessFragment) 
-				fm.findFragmentByTag(TAG);
+		RetainedHeadlessFragment fragment = (RetainedHeadlessFragment) fm
+				.findFragmentByTag(TAG);
 		if (fragment == null) {
 			fragment = new RetainedHeadlessFragment();
 			fm.beginTransaction().add(fragment, TAG).commit();
@@ -48,35 +51,41 @@ public class ImageLoader {
 	}
 
 	private final LruCache<String, Bitmap> mMemoryCache;
-	
+
 	/* No public constructor. Use getInstance() instead. */
 	private ImageLoader() {
 		mMemoryCache = new LruCache<String, Bitmap>(MEM_CACHE_SIZE) {
-            @Override protected int sizeOf(String key, Bitmap value) {
-            	return value.getByteCount();
-            }
-        };
+			@Override
+			protected int sizeOf(String key, Bitmap value) {
+				return value.getByteCount();
+			}
+		};
 	}
-	
+
 	/** load image from cache or from the Web */
-	public void loadImage(String url, ImageView imageView, Bitmap placeholderBitmap) {
+	public void loadImage(String url, ImageView imageView,
+			Bitmap placeholderBitmap) {
 		Bitmap bitmap = mMemoryCache.get(url);
-		
+
 		if (bitmap != null) { // get from cache
-			//imageView.setImageBitmap(bitmap);
+			// imageView.setImageBitmap(bitmap);
 			AnimationRunner.runAnimationAndSetBitmap(imageView, bitmap);
-			
+
 		} else { // load from Web
 			if (cancelPotentialWork(url, imageView)) {
 				AsyncTaskImageLoader task = new AsyncTaskImageLoader(imageView);
 				Resources resources = imageView.getContext().getResources();
-				final AsyncDrawable asyncDrawable = new AsyncDrawable(resources, placeholderBitmap, task);
+				final AsyncDrawable asyncDrawable = new AsyncDrawable(
+						resources, placeholderBitmap, task);
 				imageView.setImageDrawable(asyncDrawable);
-				task.execute(url, mMemoryCache);
+				task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, url,
+						mMemoryCache);
+				// For non simultaneous download use
+				// task.execute(url, mMemoryCache);
 			}
 		}
 	}
-	
+
 	private static boolean cancelPotentialWork(String url, ImageView imageView) {
 		final AsyncTaskImageLoader bitmapWorkerTask = getBitmapWorkerTask(imageView);
 		if (bitmapWorkerTask != null) {
@@ -89,7 +98,8 @@ public class ImageLoader {
 				return false;
 			}
 		}
-		// No task associated with the ImageView, or an existing task was cancelled
+		// No task associated with the ImageView, or an existing task was
+		// cancelled
 		return true;
 	}
 
